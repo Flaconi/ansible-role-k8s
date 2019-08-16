@@ -5,7 +5,7 @@
         [{{ k8s_item.context }}]{{' '}}
       {%- elif k8s_context -%}
         [{{ k8s_context }}]{{' '}}
-      {%- endif %}ensure template is removed: {{ k8s_item.template | basename }}
+      {%- endif %}ensure template is removed: {{ k8s_item.template }}
   k8s:
     state: absent
     definition: "{{ lookup('template', k8s_item.template) | from_yaml }}"
