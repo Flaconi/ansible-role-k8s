@@ -9,7 +9,7 @@ This role renders an arbitrary number of [Jinja2](http://jinja.pocoo.org/) templ
 
 ## Requirements
 
-* Ansible 2.5
+* Ansible 2.7
 * [openshift](https://pypi.org/project/openshift/) Python package
 
 
@@ -164,5 +164,5 @@ make lint
 make test
 
 # Run integration tests with custom Ansible version
-make test ANSIBLE_VERSION=2.6
+make test ANSIBLE_VERSION=2.7
 ```
