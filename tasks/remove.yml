@@ -8,7 +8,7 @@
       {%- endif %}ensure template is removed: {{ k8s_item.template }}
   k8s:
     state: absent
-    definition: "{{ lookup('template', k8s_item.template) | from_yaml }}"
+    definition: "{{ item }}"
     # Optional auth variables
     context: "{{ k8s_item.context | default(k8s_context | default(omit)) }}"
     api_key: "{{ k8s_item.api_key | default(omit) }}"
@@ -18,6 +18,7 @@
     host: "{{ k8s_item.host | default(omit) }}"
     username: "{{ k8s_item.username | default(omit) }}"
     password: "{{ k8s_item.password | default(omit) }}"
+  loop: "{{ lookup('template', k8s_item.template) | from_yaml_all | list }}"
   # Alway run when k8s_tag is not defined
   # or only run templates that match k8s_tag values
   when: |
